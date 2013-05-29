@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>jQuery Mobile Demos</title>
+	<link rel="stylesheet"  href="css/themes/default/jquery.mobile-1.3.1.min.css">
+	<link rel="stylesheet" href="_assets/css/jqm-demos.css">
+	<link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+	<script src="js/jquery.js"></script>
+	<script src="_assets/js/index.js"></script>
+	<script src="custom-scripting.js"></script>
+	<script src="js/jquery.mobile-1.3.1.min.js"></script>
+	   <style>
+		.ui-select{
+  width:70px;
+}
+	   </style>
+</head>
+<body>
+
+<div data-role="page">
+
+	<div data-role="header">
+		<h1>Nytt Inlägg</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">	
+<table>
+	<tr>
+		<td><label>Dag</label> <input type="text" name="day" style="width:50px"></td>
+		<td><label>Datum</label> <input type="date" name="crdate" id="postdate" value="" style="width:150px"></td>
+	</tr>
+</table>
+
+<h3>Vädernoteringar</h3>
+<hr>
+ <table class="table" border="0" id="weathertable">
+      <thead>
+        <tr>
+          <th>Tidpunkt</th>
+          <th>Vädertyp</th>
+          <th>m/s</th>
+          <th>Notering</th>
+          <th style="width:26px"></th>
+      </thead>
+    
+        <tr class="realrow">
+          <td> <input type="time" value="" name ="vadertid" id="ansvarig" class="input-xlarge" width="50"></td>
+          <td> <input type="text" value="" id="ansvarig" name ="vadertyp" class="input-xlarge"></td>
+          <td> <input type="text" value="" id="ansvarig" name ="vaderblast" class="input-xlarge"></td>
+          <td> <input type="text" value="" id="ansvarig" name ="vadernotering" class="input-xlarge"></td>
+		<td><a href="javascript:void(0)" class="deleteweatherrow">x</a></td>
+        </tr>
+		<tr style="display:none" class="realrow">
+          <td colspan="5"> </td>
+
+		 
+         
+        </tr>
+		<tr>
+          <td colspan="5"> <a href="javascript:void(0)" class="addrow">Lägg Till Rad</a></td>
+		
+         
+        </tr>
+	
+       
+      </tbody>
+    </table>
+		
+	
+<h3>Närvarande Arbetsstyrka</h3>
+<hr>
+ <table class="table" border="0" id="workertable">
+      <thead>
+        <tr>
+          <th>Benämning</th>
+          <th>Egna</th>
+          <th>UE</th>
+          <th>Notering</th>
+          <th style="width:26px"></th>
+      </thead>
+    
+        <tr class="realrow">
+          <td> <input type="text" value="" id="ansvarig" name="arbetareben" class="input-xlarge" width="50"></td>
+          <td> <input type="text" value="" id="ansvarig" name="arbetareegna" class="input-xlarge"></td>
+          <td> <input type="text" value="" id="ansvarig" name="arbetareue" class="input-xlarge"></td>
+          <td> <input type="text" value="" id="ansvarig" name="arbetarenot" class="input-xlarge"></td>
+		<td><a href="javascript:void(0)" class="deleteweatherrow">x</a></td>
+        </tr>
+		<tr style="display:none" class="realrow2">
+          <td colspan="5"> </td>
+        
+         
+        </tr>
+		<tr>
+          <td colspan="5"> <a href="javascript:void(0)" class="addrow">Lägg Till Rad</a></td>
+        
+         
+        </tr>
+	
+       
+      </tbody>
+    </table>
+	
+<h3>Arbeten (Påbörjade, Pågående, Färdiga)</h3>
+<hr>
+ <table class="table" border="0" id="arbetstatus" width="100%">
+      <thead>
+        <tr>
+          <th>Benämning</th>
+          <th>Status</th>
+         
+		 <th>Notering</th>
+          <th style="width:26px"></th>
+      </thead>
+    
+        <tr class="realrow">
+          <td> <input type="text" value="" name="arbetstatusben" id="ansvarig" class="input-xlarge" width="50"></td>
+          <td width="20"> 
+		  <select name="arbetstatusstatus" >	
+				<option value="1" >Påbörjad</option>
+				<option value="2" >Pågående</option>
+				<option value="3" >Färdig</option>
+		  </select>
+		  </td>
+   
+          <td> <input type="text" value="" name="arbetstatusnot" id="ansvarig" class="input-xlarge"></td>
+		<td><a href="javascript:void(0)" class="deleteweatherrow">x</a></td>
+        </tr>
+		<tr style="display:none" class="realrow">
+          <td colspan="5"> </td>
+        
+         
+        </tr>
+		<tr>
+          <td colspan="5"> <a href="javascript:void(0)" class="addrow">Lägg Till Rad</a></td>
+        
+         
+        </tr>
+	
+       
+      </tbody>
+    </table>
+		
+<h3>Ändringar, Tilläggsarbeten, Avvikelser</h3>
+<hr>
+ <table class="table" border="0" id="atatable">
+      <thead>
+        <tr>
+          <th>Benämning</th>
+          <th>Egna</th>
+          <th>UE</th>
+          <th>Notering</th>
+          <th style="width:26px"></th>
+      </thead>
+    
+        <tr class="realrow">
+          <td> <input type="text" value="" name="ataben" id="ansvarig" class="input-xlarge" width="50"></td>
+          <td> <input type="text" value=""  name="ataegna" id="ansvarig" class="input-xlarge"></td>
+          <td> <input type="text" value=""  name="ataue" id="ansvarig" class="input-xlarge"></td>
+          <td> <input type="text" value=""  name="atanot" id="ansvarig" class="input-xlarge"></td>
+		<td><a href="javascript:void(0)" class="deleteweatherrow">x</a></td>
+        </tr>
+		<tr style="display:none" class="realrow2">
+          <td colspan="5"> </td>
+        
+         
+        </tr>
+		<tr>
+          <td colspan="5"> <a href="javascript:void(0)" class="addrow">Lägg Till Rad</a></td>
+        
+         
+        </tr>
+	
+       
+      </tbody>
+    </table>
+	
+		
+<h3>Kontroll Och Provning</h3>
+<hr>
+ <table class="table" border="0" id="kontrolltable">
+      <thead>
+        <tr>
+          <th>Kategori</th>
+         
+          <th>Notering</th>
+          <th style="width:26px"></th>
+      </thead>
+    
+        <tr class="realrow">
+          <td> <input type="text" value="" name="kontrollkat" id="ansvarig" class="input-xlarge" width="50"></td>
+        
+          <td> <input type="text" value="" name="kontrollnot" id="ansvarig" class="input-xlarge"></td>
+		<td><a href="javascript:void(0)" class="deleteweatherrow">x</a></td>
+        </tr>
+		<tr style="display:none" class="realrow2">
+          <td colspan="3"> </td>
+        
+         
+        </tr>
+		<tr>
+          <td colspan="3"> <a href="javascript:void(0)" class="addrow">Lägg Till Rad</a></td>
+        
+         
+        </tr>
+	
+       
+      </tbody>
+    </table>
+<h3>Övriga Noteringar</h3>
+<hr>
+ <table class="table" border="0" id="weathertable">
+   
+    
+        <tr class="realrow">
+          <td> <textarea style="width:500px" name="noteringtext" ></textarea></td>
+         
+		<td></td>
+        </tr>
+		<tr style="display:none" class="realrow2">
+          <td > </td>
+        
+         
+        </tr>
+	
+	
+       
+      </tbody>
+    </table>
+		<button id="addimg">Lägg Till Bild</button>
+	</div><!-- /content -->
+
+
+</div><!-- /page -->
+</body>
+<script>
+	$(function(){
+	
+		$('#addimg').click(function(){
+		alert('')
+		});
+		
+		$('.addrow').click(function(){
+			
+			var id = $(this).closest('table').attr('id')
+			//alert(row)
+			
+			var row = $('#'+id+' .realrow:first').clone()
+			$('#'+id+' .realrow:last').after(row)
+			//$('#workertable .realrow:last').after('<tr class="realrow"><tr><td> <input type="time" value="" id="ansvarig" class="input-xlarge" width="50"></td><td> <input type="text" value="" id="ansvarig" class="input-xlarge"></td><td> <input type="text" value="" id="ansvarig" class="input-xlarge"></td><td> <input type="text" value="" id="ansvarig" class="input-xlarge"></td><td><a href="javascript:void(0)" class="deleteweatherrow"><i class="icon-remove"></i></a></td></tr></tr>')
+		});
+		
+		$('table').delegate('.deleteweatherrow','click',function(){
+		
+			 $(this).closest("tr").remove(); 
+		});
+		
+		});
+</script>
+</html>
