@@ -242,15 +242,42 @@
 	
 	function capturePhoto() {
   // Take picture using device camera and retrieve image as base64-encoded string
-  navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50 });
+  navigator.camera.getPicture(uploadPhoto, onFail, { quality: 50 });
 
 }
 
-function onPhotoDataSuccess(imageData) {
 
-alert(imageData)
 
-}
+ function uploadPhoto(imageData) {
+            var options = new FileUploadOptions();
+            options.fileKey="file";
+			
+		   //options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+            options.fileName=imageData
+			options.mimeType="image/jpeg";
+
+            var params = new Object();
+            params.value1 = "test";
+            params.value2 = "param";
+
+            options.params = params;
+
+            var ft = new FileTransfer();
+            ft.upload(imageData, "http://109.74.12.10/byggdagboken/app/uploader.php", win, fail, options);
+        }
+		
+		
+		function win(r) {
+            console.log("Code = " + r.responseCode);
+            console.log("Response = " + r.response);
+            console.log("Sent = " + r.bytesSent);
+        }
+
+        function fail(error) {
+            alert("An error has occurred: Code = " = error.code);
+            console.log("upload error source " + error.source);
+            console.log("upload error target " + error.target);
+        }
 
 
 function onFail(message) {
